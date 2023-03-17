@@ -1,0 +1,22 @@
+{
+  "name": "nicholas-cobb-eighth-project-team-generator",
+  "version": "1.0.0",
+  "description": "Team Profile Generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicholas4418/nicholas-cobb-eighth-project-team-generator.git"
+  },
+  "author": "Nicholas Cobb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicholas4418/nicholas-cobb-eighth-project-team-generator/issues"
+  },
+  "homepage": "https://github.com/nicholas4418/nicholas-cobb-eighth-project-team-generator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  }
+}
