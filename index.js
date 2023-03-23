@@ -4,8 +4,8 @@ const Manager = require("./lib/manager");
 const Intern = require("./lib/intern");
 const Engineer = require("./lib/engineer");
 const path = require("path");
-const OUTPUT_DIR = path.resolve(__dirname, "output");
-const output = path.join(OUTPUT_DIR, "The Team.html");
+const OUTPUT_DIR = path.resolve(__dirname, "dist");
+const output = path.join(OUTPUT_DIR, "TheTeam.html");
 
 //Array to hold user inputs
 const empArray = [];
@@ -21,7 +21,7 @@ function managerQuestions() {
     
         {
           type: "input",
-          name: "managerID",
+          name: "managerId",
           message: "Please enter the manager's employee ID number: "
         },
     
@@ -55,7 +55,7 @@ function engineerQuestions() {
 
       {
         type: "input",
-        name: "engineerID",
+        name: "engineerId",
         message: "Please enter the engineer's employee ID number: " 
       },
 
@@ -67,7 +67,7 @@ function engineerQuestions() {
 
       {
         type: "input",
-        name: "engineerGitHub",
+        name: "engineerGithub",
         message: "Please enter the engineer's GitHub username: "
       }
 
