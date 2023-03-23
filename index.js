@@ -1,8 +1,9 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const Manager = require("./lib/manager");
-const Intern = require("./lib/intern");
-const Engineer = require("./lib/engineer");
+const Manager = require("./lib/Manager");
+const Intern = require("./lib/Intern");
+const Engineer = require("./lib/Engineer");
+const generateTeam = require("./src/template.js");
 const path = require("path");
 const OUTPUT_DIR = path.resolve(__dirname, "dist");
 const output = path.join(OUTPUT_DIR, "TheTeam.html");
@@ -39,8 +40,8 @@ function managerQuestions() {
 
          ]).then(answers => {
     const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
-    teamArray.push(manager);
-    createTeam();
+    empArray.push(manager);
+    teamBuilder();
   })
 }
 
@@ -73,8 +74,8 @@ function engineerQuestions() {
 
     ]).then(answers => {
       const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
-      teamArray.push(engineer);
-      createTeam();
+      empArray.push(engineer);
+      teamBuilder();
     });
 
   }
@@ -108,47 +109,50 @@ function engineerQuestions() {
 
     ]).then(answers => {
       const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
-      teamArray.push(intern);
-      createTeam();
+      empArray.push(intern);
+      teamBuilder();
     });
 
   }
 
   function generateHTML () {
-    console.log("Team Successfully Created!")
+    console.log("Team Successfully Created!");
 
-    fs.writeFileSync(output, generateTeam(empArray), "UTF-8")
+    fs.writeFileSync(output, generateTeam(empArray), "UTF-8");
 
 }
 
 function init () {
 
-  function teamBuilder() {
-    inquirer.prompt([{
-      type: "list",
-      name: "addEmpPrompt",
-      message: "Please select employee type to add: ",
-      choices: ["Manager", "Engineer", "Intern", "No more team members are needed."]
-    }]).then(function (userInput) {
-      switch(userInput.addEmployeePrompt) {
-        case "Manager":
-          managerQuestions();
-          break;
-        case "Engineer":
-          engineerQuestions();
-          break;
-        case "Intern":
-          internQuestions();
-          break;
-
-        default:
-          generateHTML();
-      }
-    })
-  }
-
 teamBuilder();
 
+}
+
+function teamBuilder() {
+  inquirer.prompt([{
+    type: "list",
+    name: "addEmpPrompt",
+    message: "Please select employee type to add: ",
+    choices: ["Manager", 
+              "Engineer", 
+              "Intern", 
+              "No more team members are needed."]
+  }]).then(function (userInput) {
+    switch(userInput.addEmpPrompt) {
+      case "Manager":
+        managerQuestions();
+        break;
+      case "Engineer":
+        engineerQuestions();
+        break;
+      case "Intern":
+        internQuestions();
+        break;
+
+      default:
+        generateHTML();
+    }
+  })
 }
 
 init();
