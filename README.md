@@ -1,4 +1,4 @@
-# Seventh Project: Node - Professional README Generator
+# Eighth Project: Object Oriented Programming - Team Profile Generator
 
 ## Description
 
