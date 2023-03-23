@@ -115,6 +115,8 @@ function engineerQuestions() {
 
   }
 
+  //function informs the user that the team was created
+  //then creates the html file
   function generateHTML () {
     console.log("Team Successfully Created!");
 
@@ -138,6 +140,7 @@ function teamBuilder() {
               "Intern", 
               "No more team members are needed."]
   }]).then(function (userInput) {
+    //switch case to select between options
     switch(userInput.addEmpPrompt) {
       case "Manager":
         managerQuestions();
